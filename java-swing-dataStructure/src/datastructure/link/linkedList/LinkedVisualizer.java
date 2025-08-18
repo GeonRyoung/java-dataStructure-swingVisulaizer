@@ -1,4 +1,4 @@
-package link.linkedList;
+package datastructure.link.linkedList;
 
 import javax.swing.*;
 import java.awt.*;

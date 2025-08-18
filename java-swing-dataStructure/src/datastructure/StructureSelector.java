@@ -1,7 +1,8 @@
-package link;
+package datastructure;
 
-import link.arraylist.ArrayVisualizer;
-import link.linkedList.LinkedVisualizer;
+import datastructure.link.arraylist.ArrayVisualizer;
+import datastructure.link.linkedList.LinkedVisualizer;
+import datastructure.set.hashing.HashAlgorithmVisualizer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +13,7 @@ public class StructureSelector extends JFrame {
 
     private JButton array;
     private JButton linkedList;
+    private JButton hashAlgorithm;
 
     StructureSelector(){
         setTitle("StructureSelector");
@@ -25,6 +27,9 @@ public class StructureSelector extends JFrame {
         linkedList = new JButton("LinkedList");
         linkedList.setPreferredSize(new Dimension(100,100));
         this.add(linkedList);
+        hashAlgorithm = new JButton("HashAlgorithm");
+        hashAlgorithm.setPreferredSize(new Dimension(100,100));
+        this.add(hashAlgorithm);
 
         array.addActionListener(new ActionListener() {
             @Override
@@ -46,6 +51,19 @@ public class StructureSelector extends JFrame {
                     @Override
                     public void run() {
                         new LinkedVisualizer().setVisible(true);
+                    }
+                });
+                StructureSelector.this.dispose();
+            }
+        });
+
+        hashAlgorithm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        new HashAlgorithmVisualizer().setVisible(true);
                     }
                 });
                 StructureSelector.this.dispose();

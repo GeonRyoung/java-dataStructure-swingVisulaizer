@@ -1,4 +1,4 @@
-package link.arraylist;
+package datastructure.link.arraylist;
 
 import javax.swing.*;
 import java.awt.*;
