@@ -1,4 +1,4 @@
-package arraylist;
+package link.arraylist;
 
 import javax.swing.*;
 import java.awt.*;
