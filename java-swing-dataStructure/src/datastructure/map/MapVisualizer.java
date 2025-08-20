@@ -16,7 +16,7 @@ public class MapVisualizer extends JFrame {
     private JTextField keyField;
     private JTextField valueField;
 
-    MapVisualizer(){
+    public MapVisualizer(){
         setTitle("MapVisualizer");
         setSize(800,350);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

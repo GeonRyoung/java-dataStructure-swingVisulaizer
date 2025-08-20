@@ -1,5 +1,6 @@
 package datastructure;
 
+import datastructure.deque.DequeVisualizer;
 import datastructure.link.arraylist.ArrayVisualizer;
 import datastructure.link.linkedList.LinkedVisualizer;
 import datastructure.map.MapVisualizer;
@@ -16,6 +17,7 @@ public class StructureSelector extends JFrame {
     private JButton linkedList;
     private JButton hashAlgorithm;
     private JButton map;
+    private JButton deque;
 
     StructureSelector(){
         setTitle("StructureSelector");
@@ -35,6 +37,10 @@ public class StructureSelector extends JFrame {
         map = new JButton("Map");
         map.setPreferredSize(new Dimension(100,100));
         this.add(map);
+
+        deque = new JButton("Deque");
+        deque.setPreferredSize(new Dimension(100,100));
+        this.add(deque);
 
         array.addActionListener(new ActionListener() {
             @Override
@@ -81,10 +87,22 @@ public class StructureSelector extends JFrame {
                 SwingUtilities.invokeLater(new Runnable() {
                     @Override
                     public void run() {
-                        //new MapVisualizer().setVisible(true);
+                        new MapVisualizer().setVisible(true);
                     }
                 });
                 StructureSelector.this.dispose();
+            }
+        });
+
+        deque.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        new DequeVisualizer().setVisible(true);
+                    }
+                });
             }
         });
     }
