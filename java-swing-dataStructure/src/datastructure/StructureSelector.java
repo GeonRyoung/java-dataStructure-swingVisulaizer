@@ -2,6 +2,7 @@ package datastructure;
 
 import datastructure.link.arraylist.ArrayVisualizer;
 import datastructure.link.linkedList.LinkedVisualizer;
+import datastructure.map.MapVisualizer;
 import datastructure.set.hashing.HashAlgorithmVisualizer;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class StructureSelector extends JFrame {
     private JButton array;
     private JButton linkedList;
     private JButton hashAlgorithm;
+    private JButton map;
 
     StructureSelector(){
         setTitle("StructureSelector");
@@ -30,6 +32,9 @@ public class StructureSelector extends JFrame {
         hashAlgorithm = new JButton("HashAlgorithm");
         hashAlgorithm.setPreferredSize(new Dimension(100,100));
         this.add(hashAlgorithm);
+        map = new JButton("Map");
+        map.setPreferredSize(new Dimension(100,100));
+        this.add(map);
 
         array.addActionListener(new ActionListener() {
             @Override
@@ -64,6 +69,19 @@ public class StructureSelector extends JFrame {
                     @Override
                     public void run() {
                         new HashAlgorithmVisualizer().setVisible(true);
+                    }
+                });
+                StructureSelector.this.dispose();
+            }
+        });
+
+        map.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        //new MapVisualizer().setVisible(true);
                     }
                 });
                 StructureSelector.this.dispose();
