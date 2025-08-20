@@ -8,7 +8,7 @@ import java.util.LinkedList;
 
 public class HashAlgorithmVisualizer extends JFrame {
 
-    private LinkedList<Integer>[] buckets;
+    private LinkedList<Object>[] buckets;
     private static final int INITIAL_SIZE = 5;
     private int capacity = 5;
 
@@ -70,7 +70,7 @@ public class HashAlgorithmVisualizer extends JFrame {
                     return;
                 }
                 try{
-                    int value = Integer.parseInt(valueField.getText());
+                    Object value = valueField.getText();
                     if(buckets[hashIndex(value)].isEmpty()){
                         add(buckets, value);
                         valueField.setText("");
@@ -109,7 +109,7 @@ public class HashAlgorithmVisualizer extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    int searchValue = Integer.parseInt(searchField.getText());
+                    Object searchValue = searchField.getText();
                     boolean isExist = contains(buckets, searchValue);
                     if(isExist){
                         JOptionPane.showMessageDialog(HashAlgorithmVisualizer.this
@@ -137,17 +137,22 @@ public class HashAlgorithmVisualizer extends JFrame {
         return value % capacity;
     }
 
-    private void add(LinkedList<Integer>[] buckets, int value){
+    private int hashIndex(Object value){
+        int hashCode = value.hashCode();
+        return hashCode % capacity;
+    }
+
+    private void add(LinkedList<Object>[] buckets, Object value){
         int hashIndex =hashIndex(value);
-        LinkedList<Integer> bucket = buckets[hashIndex]; // O(1)
+        LinkedList<Object> bucket = buckets[hashIndex]; // O(1)
         if(!bucket.contains(value)){ //O(n)
             bucket.add(value);
         }
     }
 
-    private boolean contains(LinkedList<Integer>[] buckets, int searchValue){
+    private boolean contains(LinkedList<Object>[] buckets, Object searchValue){
         int hashIndex = hashIndex(searchValue);
-        LinkedList<Integer> bucket = buckets[hashIndex];
+        LinkedList<Object> bucket = buckets[hashIndex];
         return bucket.contains(searchValue);
     }
 
@@ -165,7 +170,7 @@ public class HashAlgorithmVisualizer extends JFrame {
                 g.setColor(Color.BLACK);
                 g.drawRect(currentX, startY, boxWidth, boxHeight);
 
-                LinkedList<Integer> bucket = buckets[i];
+                LinkedList<Object> bucket = buckets[i];
                 String value = "";
                 if(!bucket.isEmpty()) {
                     value = String.valueOf(bucket);
@@ -187,4 +192,6 @@ public class HashAlgorithmVisualizer extends JFrame {
             }
         });
     }
+
+
 }
